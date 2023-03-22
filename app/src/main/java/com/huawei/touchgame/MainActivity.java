@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent NewGameScreen = new Intent(MainActivity.this, GameActivity.class);
         Intent ViewScoreScreen = new Intent(MainActivity.this, score_table.class);
+
+
 
         Button newgame = findViewById(R.id.newgame_button);
 
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         exitgame_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Toast.makeText(getBaseContext(),"Game Exited",Toast.LENGTH_SHORT).show();
                 System.exit(0);
             }
         });

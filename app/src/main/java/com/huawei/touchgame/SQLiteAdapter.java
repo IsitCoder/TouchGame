@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteAdapter {
 
-    public static final String MYDATABASE_NAME = "MY_DATABASE";
+    public static final String MYDATABASE_NAME = "TouchGameScore";
     public static final String MYDATABASE_TABLE = "Score_Table";
-    public static final int MYDATABASE_VERSION = 3;
+    public static final int MYDATABASE_VERSION = 1;
     public static final String KEY_CONTENT = "Name";
     public static final String KEY_CONTENT1 = "Score";
 
@@ -47,10 +47,10 @@ public class SQLiteAdapter {
     public void close() {
         sqLiteHelper.close();
     }
-    public long insert(String content,int content2) {
+    public long insert(String content,int content1) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_CONTENT, content);
-        contentValues.put(KEY_CONTENT1, content2);
+        contentValues.put(KEY_CONTENT1, content1);
         return sqLiteDatabase.insert(MYDATABASE_TABLE, null,
                 contentValues);
     }
@@ -63,7 +63,7 @@ public class SQLiteAdapter {
 
     public String queryByScore() {
         String[] columns = new String[] { KEY_CONTENT,KEY_CONTENT1 };
-        Cursor cursor = sqLiteDatabase.query(MYDATABASE_TABLE, columns, null, null, null, null, KEY_CONTENT1+" DESC");
+        Cursor cursor = sqLiteDatabase.query(MYDATABASE_TABLE, columns, null, null, null, null, null);
         String result = "";
 
         int index_CONTENT = cursor.getColumnIndex(KEY_CONTENT);

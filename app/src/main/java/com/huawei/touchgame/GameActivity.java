@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
-    private SQLiteAdapter mySQLiteAdapter;
+
     private int score = 0;
 
     @Override
@@ -46,11 +46,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void startNextLevel() {
+        Intent HighScoreScreen = new Intent(GameActivity.this, HigherScorerActivity.class);
+        HighScoreScreen.putExtra("score", score);
 
         Intent levelScreenIntent = new Intent(GameActivity.this, NextLevelScreen.class);
         levelScreenIntent.putExtra("level", level);
         levelScreenIntent.putExtra("score", score);
-        startActivity(levelScreenIntent);
+        startActivity(HighScoreScreen);
         level++;
         createViews();
     }
@@ -73,7 +75,6 @@ public class GameActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-                builder.setNegativeButton("No", null);
                 AlertDialog dialog = builder.create();
                 dialog.show();
                 //showScoreTable();

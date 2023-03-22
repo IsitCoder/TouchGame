@@ -6,9 +6,10 @@
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/drawable/border.xml" value="0.18981481481481483" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_game.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_game_menu.xml" value="0.18" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_higher_scorer.xml" value="0.25" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_next_level_screen.xml" value="0.1" />
-        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_score_table.xml" value="0.12" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_score_table.xml" value="0.1" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/recycle_view.xml" value="0.25" />
       </map>
     </option>
@@ -22,7 +23,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.18" />
       </ProjectState>
     </option>
   </component>
