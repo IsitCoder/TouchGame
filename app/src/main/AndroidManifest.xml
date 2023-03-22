@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TouchGame">
         <activity
+            android:name=".GameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".score_table"
+            android:exported="false" />
+        <activity
+            android:name=".NextLevelScreen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
