@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button exitgame_button = findViewById(R.id.exitgame_button);
+        Button exited_button = findViewById(R.id.exitgame_button);
 
-        exitgame_button.setOnClickListener(new View.OnClickListener() {
+        exited_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finishAffinity();
                 Toast.makeText(getBaseContext(),"Game Exited",Toast.LENGTH_SHORT).show();
-                System.exit(0);
             }
         });
     }

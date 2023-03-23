@@ -48,8 +48,8 @@ public class HigherScorerActivity extends AppCompatActivity {
                 else{
                     mySQLiteAdapter.insert(name, finalScore1);
                     Toast.makeText(HigherScorerActivity.this,"Your score have been recorded",Toast.LENGTH_SHORT).show();
-                    Intent homepage = new Intent(HigherScorerActivity.this,MainActivity.class);
-                    startActivity(homepage);
+                    Intent scoretable = new Intent(HigherScorerActivity.this,score_table.class);
+                    startActivity(scoretable);
                 }
             }
         });

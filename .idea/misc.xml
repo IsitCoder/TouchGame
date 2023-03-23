@@ -3,14 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/drawable/border.xml" value="0.18981481481481483" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/drawable/highlighed.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/drawable/touched.xml" value="0.21481481481481482" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_game.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_game_menu.xml" value="0.18" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_higher_scorer.xml" value="0.25" />
-        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_next_level_screen.xml" value="0.1" />
-        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_score_table.xml" value="0.1" />
-        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/recycle_view.xml" value="0.25" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/activity_score_table.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/recycle_view.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/60135/AndroidStudioProjects/TouchGame/app/src/main/res/layout/recycle_view_row.xml" value="0.9" />
       </map>
     </option>
   </component>
@@ -23,7 +27,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.18" />
+        <option name="scale" value="0.23333333333333334" />
       </ProjectState>
     </option>
   </component>

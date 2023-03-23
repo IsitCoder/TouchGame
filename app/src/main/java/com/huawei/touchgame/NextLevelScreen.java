@@ -17,11 +17,15 @@ public class NextLevelScreen extends AppCompatActivity {
 
         Intent in = getIntent();
         Bundle info = in.getExtras();
+        int currentLevel = 0;
+        int currentScore = 0;
+        int lowestScore = 0;
 
         if(info!=null)
         {
-            int currentLevel = (int)info.get("level");
-            int currentScore = (int)info.get("score");
+           currentLevel = (int)info.get("level");
+           currentScore = (int)info.get("score");
+           lowestScore = (int)info.get("lowestScore");
 
             TextView showLevel = findViewById(R.id.level_completed);
             TextView showScore = findViewById(R.id.score_text);
@@ -42,12 +46,21 @@ public class NextLevelScreen extends AppCompatActivity {
         Intent BackMainMenu = new Intent(NextLevelScreen.this, MainActivity.class);
         Button exitButton = findViewById(R.id.exit_button);
 
+        int finalCurrentScore = currentScore;
+        int finalLowestScore = lowestScore;
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                startActivity(BackMainMenu);
-                Toast.makeText(getBaseContext(),"Back to Menu",Toast.LENGTH_SHORT).show();
+                if(finalCurrentScore > finalLowestScore)
+                {
+                    Intent HighScoreScreen = new Intent(NextLevelScreen.this, HigherScorerActivity.class);
+                    HighScoreScreen.putExtra("score", finalCurrentScore);
+                    startActivity(HighScoreScreen);
+                }else {
+                    finish();
+                    startActivity(BackMainMenu);
+                    Toast.makeText(getBaseContext(), "Back to Menu", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

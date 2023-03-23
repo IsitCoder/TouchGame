@@ -11,19 +11,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
-
+    private SQLiteAdapter mySQLiteAdapter;
     private int score = 0;
+    private int lowestScore=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        mySQLiteAdapter = new SQLiteAdapter(this);
+        mySQLiteAdapter.openToRead();
+        lowestScore = mySQLiteAdapter.queryLowestScore();
+        mySQLiteAdapter.close();
 
         startNewGame();
     }
@@ -35,7 +42,6 @@ public class GameActivity extends AppCompatActivity {
     private boolean isTouched = false;
     private CountDownTimer timer = null;
     private int level = 1;
-    private int successfulTouches = 0;
     private int[] numViews = {4,9,16,25,36};
 
 
@@ -43,16 +49,16 @@ public class GameActivity extends AppCompatActivity {
         level = 1;
         score = 0;
         createViews();
+        Toast.makeText(getBaseContext(),"Touch the Yellow, Count down will start automatically",Toast.LENGTH_LONG).show();
     }
 
     private void startNextLevel() {
-        Intent HighScoreScreen = new Intent(GameActivity.this, HigherScorerActivity.class);
-        HighScoreScreen.putExtra("score", score);
 
         Intent levelScreenIntent = new Intent(GameActivity.this, NextLevelScreen.class);
         levelScreenIntent.putExtra("level", level);
         levelScreenIntent.putExtra("score", score);
-        startActivity(HighScoreScreen);
+        levelScreenIntent.putExtra("lowestScore", lowestScore);
+        startActivity(levelScreenIntent);
         level++;
         createViews();
     }
@@ -63,9 +69,12 @@ public class GameActivity extends AppCompatActivity {
             timer.cancel();
         isTouched=false;
         if(falseViews.isEmpty()){
-            if(level<5){
+            if(level<5)
+            {
                 startNextLevel();
-            }else{
+            }
+            else // complete all level and record scorer
+            {
                 AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
                 builder.setTitle("congratulation");
                 builder.setMessage("you have win the all level");
@@ -77,22 +86,43 @@ public class GameActivity extends AppCompatActivity {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                //showScoreTable();
+
+
+                Intent HighScoreScreen = new Intent(GameActivity.this, HigherScorerActivity.class);
+                HighScoreScreen.putExtra("score", score);
+                startActivity(HighScoreScreen);
+
             }
 
         }else {
-            AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-            builder.setTitle("congratulation");
-            builder.setMessage("your score are " + score);
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    finish();
-                }
-            });
-            builder.setNegativeButton("No", null);
-            AlertDialog dialog = builder.create();
-            dialog.show();
+
+            if(score>lowestScore)
+            {
+                Intent HighScoreScreen = new Intent(GameActivity.this, HigherScorerActivity.class);
+                HighScoreScreen.putExtra("score", score);
+                startActivity(HighScoreScreen);
+            }
+            else
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                builder.setTitle("Time up! congratulation!");
+                builder.setMessage("your score are " + score +"\nYou haven't in the leaderboard\n Do you wish to restart the game");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        recreate();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+
         }
 
 
@@ -139,7 +169,8 @@ public class GameActivity extends AppCompatActivity {
                     }
 
                     if (v == highlightedView) {
-                        v.setBackgroundColor(Color.BLUE);
+                        Drawable touched = getDrawable(R.drawable.touched);
+                        v.setBackground(touched);
                         falseViews.remove(v);
                         score++;
                         TextView scoreTextView = findViewById(R.id.score_text_view);
@@ -167,7 +198,8 @@ public class GameActivity extends AppCompatActivity {
     View highlightedView;
     private void highlightNewView() {
         highlightedView = falseViews.get(new Random().nextInt(falseViews.size()));
-        highlightedView.setBackgroundColor(Color.YELLOW);
+        Drawable highlighted = getDrawable(R.drawable.highlighed);
+        highlightedView.setBackground(highlighted);
 
     }
 
